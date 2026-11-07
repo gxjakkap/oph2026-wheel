@@ -1,0 +1,17 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"useTabs": true,
+	"tabWidth": 2,
+	"printWidth": 120,
+	"singleQuote": false,
+	"jsxSingleQuote": false,
+	"quoteProps": "as-needed",
+	"trailingComma": "es5",
+	"semi": false,
+	"arrowParens": "always",
+	"bracketSameLine": true,
+	"bracketSpacing": true,
+	"endOfLine": "lf",
+	"sortImports": true,
+	"ignorePatterns": ["**/routeTree.gen.ts", "**/*.svg", "worker-configuration.d.ts", "migrations/meta/**"]
+}

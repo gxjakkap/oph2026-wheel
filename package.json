@@ -1,0 +1,58 @@
+{
+	"name": "oph2026-wheel",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc -b && vite build",
+		"preview": "bun run build && vite preview",
+		"lint": "oxlint",
+		"test": "bun test",
+		"types": "wrangler types",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate:local": "wrangler d1 migrations apply oph2026-wheel --local",
+		"db:migrate:remote": "wrangler d1 migrations apply oph2026-wheel --remote",
+		"deploy": "bun run build && wrangler deploy",
+		"prepare": "husky",
+		"format": "oxfmt"
+	},
+	"dependencies": {
+		"@heroui/react": "^3.2.7",
+		"@heroui/styles": "^3.2.7",
+		"@phosphor-icons/react": "^2.1.10",
+		"@tailwindcss/vite": "^4.3.3",
+		"@tanstack/react-router": "^1.170.46",
+		"drizzle-orm": "^0.45.4",
+		"hono": "^4.13.14",
+		"react": "^19.3.1",
+		"react-dom": "^19.3.1",
+		"tailwindcss": "^4.3.3"
+	},
+	"devDependencies": {
+		"@cloudflare/vite-plugin": "^1.66.0",
+		"@commitlint/cli": "^21.2.4",
+		"@commitlint/config-conventional": "^21.2.4",
+		"@tanstack/router-plugin": "^1.168.48",
+		"@types/bun": "^1.4.4",
+		"@types/node": "^24.19.2",
+		"@types/react": "^19.3.0",
+		"@types/react-dom": "^19.3.0",
+		"@vitejs/plugin-react": "^6.1.2",
+		"drizzle-kit": "^0.31.11",
+		"husky": "^9.1.7",
+		"lint-staged": "^17.6.0",
+		"oxfmt": "^0.75.0",
+		"oxlint": "^1.89.0",
+		"typescript": "~7.0.2",
+		"vite": "^8.3.5",
+		"wrangler": "^4.156.0"
+	},
+	"lint-staged": {
+		"*.{ts,tsx,js,jsx,mjs,cjs}": [
+			"oxlint --fix",
+			"oxfmt --no-error-on-unmatched-pattern"
+		],
+		"*.{json,jsonc,css,md,yaml,yml,html}": "oxfmt --no-error-on-unmatched-pattern"
+	}
+}

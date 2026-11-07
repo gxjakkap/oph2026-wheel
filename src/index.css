@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+
+@theme {
+	--color-cream: #fff8ef;
+	--color-navy: #1e2331;
+	--color-plum: #382063;
+	--color-lilac: #8e61ad;
+	--color-teal: #5cc8b7;
+	--color-sun: #e7ce69;
+	--font-sans: "Plus Jakarta Sans", "Noto Sans Thai", system-ui, sans-serif;
+}
+
+/* same sky as the portfolio, fixed behind every page */
+html {
+	background-color: #251b5d;
+}
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	background: url(/bg.webp) center / cover;
+}
+
+@keyframes confetti {
+	from {
+		transform: translateY(-10vh) rotate(0);
+	}
+	to {
+		transform: translateY(110vh) rotate(720deg);
+	}
+}

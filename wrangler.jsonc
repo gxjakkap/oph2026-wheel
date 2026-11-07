@@ -1,0 +1,27 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "oph2026-wheel",
+	"account_id": "bd9bb043cf4f5871232d3baaa5c6abf0",
+	"main": "worker/index.ts",
+	"compatibility_date": "2026-10-01",
+	"compatibility_flags": ["nodejs_compat"],
+	"routes": [{ "pattern": "wheel.cpesu.com", "custom_domain": true }],
+	"assets": {
+		"not_found_handling": "single-page-application",
+		"run_worker_first": ["/api/*"],
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "oph2026-wheel",
+			"database_id": "c13cc3fd-f750-42f9-839f-d0ba09d0646d",
+			"migrations_dir": "migrations",
+		},
+	],
+	// merch photos, served by the worker at /api/img/<key>
+	"r2_buckets": [{ "binding": "BUCKET", "bucket_name": "oph2026-wheel" }],
+	// password guesses: 10 per minute per IP
+	"ratelimits": [{ "name": "LOGIN_LIMIT", "namespace_id": "2601", "simple": { "limit": 10, "period": 60 } }],
+	// secret: APP_PASSWORD (shared by the TV and admin) in .dev.vars locally, `wrangler secret put` in prod
+	"observability": { "enabled": true },
+}
